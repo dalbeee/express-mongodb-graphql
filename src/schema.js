@@ -3,18 +3,34 @@ import User from "./models/User";
 
 const typeDefs = `
     type User {
+      id: ID!
+      name: String
+      getAllPost: [Post!]!
+      joinDate: Date
+      LastLoggedIn: Date
+      LoggedIn: Boolean
+    }
 
-        id: ID!
-        name: String
+    type Post {
+      id: ID!
+      title: String!
+      content: String!
+      writtenBy: User!
+      createdBy: Date!
+      removedBy: Date!
+    }
+
+    type Date {
+      time: String!
     }
 
     type Query{
-        allUsers: [User!]!
-        getUser(_id: ID): User!
+      allUsers: [User!]!
+      getUser(_id: ID): User!
     }
 
     type Mutation{
-        createUser(name: String): User!
+      createUser(name: String): User!
     }
 `;
 
